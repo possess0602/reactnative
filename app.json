@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "test-reactnative",
+    "slug": "test-reactnative",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "config"  : {
+        "firebase": {
+          "apiKey": "AIzaSyB5A-kUevsDS5p8iJx7lK0W0yuR2O07bME",
+          "authDomain": "product-3bd20.firebaseapp.com",
+          "databaseURL": "https://product-3bd20.firebaseio.com",
+          "projectId": "product-3bd20",
+          "storageBucket": "product-3bd20.appspot.com",
+          "messagingSenderId": "752099328858",
+          "appId": "1:752099328858:web:0997aa554067e74e3a6963",
+          "measurementId": "G-8PX385GWT1"
+        }
+      }
+    }
+  }
+}
