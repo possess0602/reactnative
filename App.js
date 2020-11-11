@@ -8,6 +8,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ProductList from "./src/product/ProductList_f";
 import PersonList from './src/person/PersonList';
+// import SignUp from './src/account/signUp';
+import SignIn from './src/account/signIn';
+import SignOut from './src/account/signOut';
+
+
 
 
 // import styles from "../style";
@@ -99,6 +104,10 @@ export default function App() {
           activeTintColor: '#20b2aa',
           inactiveTintColor: 'blue',
         }}>
+        {/* <Tab.Screen name="SignUp" component={SignUp} /> */}
+        <Tab.Screen name="SignIn" component={SignIn} />
+        <Tab.Screen name="SignOut" component={SignOut} />
+
 
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Details" component={DetailsScreen} />

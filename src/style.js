@@ -73,6 +73,29 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
   },
+  // account.js part
+  form: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: 35,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  inputStyle: {
+    width: '100%',
+    marginBottom: 15,
+    paddingBottom: 15,
+    alignSelf: "center",
+    borderColor: "#ccc",
+    borderBottomWidth: 1
+  },
+  button_sign: {
+    marginTop: 2,
+    
+    marginVertical: 2,
+    
+  },
+
 });
 
 export default styles;
