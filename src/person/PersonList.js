@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect,useContext} from 'react';
 
 import {FlatList, View, Text, TouchableOpacity} from 'react-native';
 
@@ -12,6 +12,8 @@ import PersonAddEdit from './PersonAddEdit';
 
 import styles from '../style';
 import {axios_config, url} from './config';
+import {AuthContext} from '../account/AuthContext';
+
 
 
 
@@ -26,6 +28,7 @@ export default function PersonList() {
 
   const [selectedId, setSelectedId] = useState(null);
 
+
   const [person, setPerson] = useState({
 
       Name:"",
@@ -36,9 +39,13 @@ export default function PersonList() {
 
     );//temp variable for edit
 
+    const authContext = useContext(AuthContext);
 
 
   useEffect(() => {
+    console.log("isSignedIn in PersonList:"+authContext.isSignedIn);
+
+
 
     async function fetchData () {
 

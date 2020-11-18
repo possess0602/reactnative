@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 
 import { View, Text } from 'react-native';
 
@@ -11,16 +11,13 @@ import PersonList from './src/person/PersonList';
 // import SignUp from './src/account/signUp';
 import SignIn from './src/account/signIn';
 import SignOut from './src/account/signOut';
-
+import {AuthContext} from './src/account/AuthContext';
 
 
 
 // import styles from "../style";
 
 //import { createStackNavigator } from '@react-navigation/stack';
-
-
-
 
 
 function HomeScreen() {
@@ -76,11 +73,12 @@ const Tab = createBottomTabNavigator();
 
 
 export default function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   return (
 
     <NavigationContainer>
-
+ <AuthContext.Provider value={{isSignedIn: isSignedIn,setStatus:setIsSignedIn}}>
       <Tab.Navigator  screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -105,16 +103,24 @@ export default function App() {
           inactiveTintColor: 'blue',
         }}>
         {/* <Tab.Screen name="SignUp" component={SignUp} /> */}
-        <Tab.Screen name="SignIn" component={SignIn} />
-        <Tab.Screen name="SignOut" component={SignOut} />
-
-
+        {isSignedIn?(
+          <>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Details" component={DetailsScreen} />
         {/* <Tab.Screen name="價格表" component={memorandum} /> */}
         <Tab.Screen name="PersonList" component={memorandum} />
-      </Tab.Navigator>
+        <Tab.Screen name="SignOut" component={SignOut} />
 
+          </>
+          )
+        :(
+          <>
+           <Tab.Screen name="SignIn" component={SignIn} />
+
+        </>
+        )}
+      </Tab.Navigator>
+      </AuthContext.Provider>
     </NavigationContainer>
 
   );

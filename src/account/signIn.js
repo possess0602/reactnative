@@ -1,15 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import {Button, View, Text, TextInput,Alert  } from 'react-native';
 import * as firebase from 'firebase';
 import * as FirebaseCore from 'expo-firebase-core';
 
 import styles from '../style';
+import {AuthContext} from '../account/AuthContext';
+
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [UserStatus,SetUserStatus]= useState("");
+  const authContext = useContext(AuthContext);
+
+
   if (!firebase.apps.length) {
     firebase.initializeApp(FirebaseCore.DEFAULT_WEB_APP_OPTIONS);
   }
@@ -22,6 +27,9 @@ export default function SignIn() {
       setEmail('');
       setPassword('');
       setMessage('');
+      authContext.setStatus(true);
+
+
     }
     catch(error){
       setMessage(error.message);
@@ -81,14 +89,12 @@ export default function SignIn() {
         maxLength={15}
         secureTextEntry={true}
       />   
-      {UserStatus?
+      
       <Button
         title="登入"
         onPress={signIn}
         style={styles.button_sign}
-      />:<Text>
-      尚未註冊，我要註冊
-    </Text>} ;
+      />
     <Button title="登出"
     color="#f194ff"
     onPress={signOut}
